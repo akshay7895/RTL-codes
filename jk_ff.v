@@ -1,14 +1,20 @@
-module tb_try;
-reg j,k,clk,rst,prst;
-wire q,qbar;
+module try (input j,k, clk,resetn,output reg q, output qbar);
 
-try dut (.j(j),.k(k),.clk(clk),.rst(resetn),.prst(presetn),.q(q),.qbar(qbar));
+assign qbar = q;
 
-initial 
+always@( posedge clk)
 begin
-clk=1'b0;
-forever #10 clk = ~clk;
+if(!resetn)
+q<=1'b0;
+else
+begin
+case({j,k})
+00: q <= q;
+01: q <= 1'b0;
+10: q <= 1'b1;
+11: q <= qbar;
+default: q <= 1'bx;
+endcase
 end
-
-initial
-begin
+end
+endmodule
