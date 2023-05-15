@@ -2,7 +2,7 @@
 
 module siso( input din, clk, reset, output reg dout);
 wire d0,d1,d2;
-  reg q3,q2,q1;
+  reg q3,q2,q1; //here dout is q0
   
   always@(posedge clk) begin
     if(reset) begin
