@@ -9,7 +9,7 @@ module tb;
     a <=  #15 clk;
     #21;
   end 
-  
+ 
   initial
     begin
       $dumpvars;
